@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ESnext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "types": ["node", "cors"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "includes": ["./be-src/**/*.ts", "src/**/*", "images.d.ts"]
+}

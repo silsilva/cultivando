@@ -1,0 +1,12 @@
+.env
+.vercel
+.next
+node_modules
+.parcel-cache
+dist
+.parcel-cache/
+.parcel-cache/data.mdb
+parcel-cache/
+parcel-cache/data.mdb
+parcel-cache
+.yarnrc
