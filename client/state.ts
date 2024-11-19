@@ -38,7 +38,7 @@ const state = {
   },
 
   async authUser(email) {
-    const res = await fetch(" http://localhost:3000/check", {
+    const res = await fetch("https://cultivando.onrender.com/check", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -54,7 +54,7 @@ const state = {
   async signUp(userData) {
     const currentState = this.getState();
 
-    const res = await fetch(" http://localhost:3000/auth", {
+    const res = await fetch("https://cultivando.onrender.com/auth", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -73,7 +73,7 @@ const state = {
   async signIn(password) {
     const currentState = this.getState();
 
-    const res = await fetch(" http://localhost:3000/auth/token", {
+    const res = await fetch("https://cultivando.onrender.com/auth/token", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -96,7 +96,7 @@ const state = {
 
   async myInfo() {
     const currentState = state.getState();
-    const res = await fetch(" http://localhost:3000/me", {
+    const res = await fetch("https://cultivando.onrender.com/me", {
       headers: {
         "content-type": "application/json",
         authorization: `bearer ${currentState.authtoken}`,
@@ -112,7 +112,7 @@ const state = {
     currentState.userLocation = coordinates;
 
     const res = await fetch(
-      `http://localhost:3000/comercio-around?lat=${coordinates.lat}&lng=${coordinates.lng}`,
+      `https://cultivando.onrender.com/comercio-around?lat=${coordinates.lat}&lng=${coordinates.lng}`,
       {
         headers: {
           "content-type": "application/json",
@@ -149,7 +149,7 @@ const state = {
 
     const currentState = this.getState();
 
-    const res = await fetch(" http://localhost:3000/comercio", {
+    const res = await fetch("https://cultivando.onrender.com/comercio", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -166,7 +166,7 @@ const state = {
   //OBTIENE LOS DATOS DE LA MASCOTAS
   async getMyShops() {
     const currentState = this.getState();
-    const res = await fetch(" http://localhost:3000/me/comercio/", {
+    const res = await fetch("https://cultivando.onrender.com/me/comercio/", {
       headers: {
         "content-type": "application/json",
         authorization: `bearer ${currentState.authtoken.token}`,
@@ -190,12 +190,15 @@ const state = {
     const currentState = this.getState();
 
     try {
-      const res = await fetch("http://localhost:3000/comercio/" + shopsId, {
-        headers: {
-          "content-type": "application/json",
-          authorization: `bearer ${currentState.authtoken.token}`,
-        },
-      });
+      const res = await fetch(
+        "https://cultivando.onrender.com/comercio/" + shopsId,
+        {
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${currentState.authtoken.token}`,
+          },
+        }
+      );
 
       if (!res.ok) {
         throw new Error(`Error en la red: ${res.statusText}`);
@@ -222,7 +225,7 @@ const state = {
   async editShops(params) {
     const currentState = this.getState();
     const res = await fetch(
-      ` http://localhost:3000/comercio/${currentState.shopsData.id}`,
+      `https://cultivando.onrender.com/comercio/${currentState.shopsData.id}`,
       {
         method: "put",
         headers: {
@@ -238,13 +241,16 @@ const state = {
 
   async deleteShops(shopsID: number) {
     const currentState = this.getState();
-    const res = await fetch(" http://localhost:3000/comercio/" + shopsID, {
-      method: "delete",
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${currentState.authtoken.token}`,
-      },
-    });
+    const res = await fetch(
+      "https://cultivando.onrender.com/comercio/" + shopsID,
+      {
+        method: "delete",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${currentState.authtoken.token}`,
+        },
+      }
+    );
 
     const resJson = await res.json();
     return resJson;
@@ -252,7 +258,7 @@ const state = {
 
   async editMyInfo(params) {
     const currentState = this.getState();
-    const res = await fetch(" http://localhost:3000/me", {
+    const res = await fetch("https://cultivando.onrender.com/me", {
       method: "put",
       headers: {
         "content-type": "application/json",
